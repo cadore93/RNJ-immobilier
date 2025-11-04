@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* ------------------ */
+/* Thème global noir  */
+/* ------------------ */
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  background: #0b0b0d;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ------------------ */
+/* Texte doré effet logo RNJ */
+/* ------------------ */
+.gold-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  background: linear-gradient(
+    135deg,
+    #f5e3a1 0%,
+    #d4af37 25%,
+    #b88a1b 50%,
+    #f1d277 75%,
+    #f7e9b3 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.tagline {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ------------------ */
+/* Bouton doré stylisé */
+/* ------------------ */
+.btn-gold {
+  @apply inline-flex items-center gap-2 px-6 py-3 rounded-2xl font-medium transition;
+  background: linear-gradient(135deg, #d4af37, #b88a1b);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+.btn-gold:hover {
+  filter: brightness(1.06);
+}
+
+/* ------------------ */
+/* Cartes translucides dorées */
+/* ------------------ */
+.card {
+  background: linear-gradient(
+    145deg,
+    rgba(212, 175, 55, 0.06),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+/* ------------------ */
+/* Transitions globales */
+/* ------------------ */
+a {
+  transition: all 0.3s ease;
+}
+/* ===== Animations RNJ ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to   { transform: scale(1.06); }
+}
+@keyframes shine {
+  0%   { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(150%)  skewX(-20deg); }
+}
+
+/* Fond qui zoome doucement */
+.bg-zoom {
+  animation: slowZoom 18s ease-out forwards;
+  will-change: transform;
+}
+
+/* Apparition du contenu */
+.hero-fade {
+  animation: fadeInUp .8s ease-out .2s both;
+}
+
+/* Reflet doré qui balaie le logo */
+.logo-shine {
+  position: relative;
+  display: inline-block;
+}
+.logo-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+  transform: translateX(-150%) skewX(-20deg);
+  animation: shine 5.5s ease-in-out 1.4s infinite;
+  border-radius: 12px; /* adoucit le reflet */
+}
